@@ -1,7 +1,8 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
+ * get and get by id or location done , validation sort of done
+ * TO DO
+ * errors, een update wss een put ? Idempotence
  */
 //var dal = require("./storage.js");
 var dal_Locations= require("./Locations.js");
