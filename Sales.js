@@ -42,7 +42,7 @@ var dal_Sales={
        //collection.findAndModify    https://mongodb.github.io/node-mongodb-native/markdown-docs/insert.html
       updateSales: function(id,callback){
         this.connect(null,function(db){
-            db.collection('sales').findAndModify({locationid:id},[],{$set: {"locationid": id}},{new: true},
+            db.collection('sales').findAndModify({saleid:id},[],{$set: {"saleid": id}},{new: true},
             function(err, result) {
                 if(err) {
      console.log(err.message);

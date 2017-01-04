@@ -108,10 +108,10 @@ var Sale = function (saleid, product, quantity,total, date, locationid) {
     this.date=date;
      this.locationid = locationid;
 };
-    //{"saleid":"1","product":"smos","quantity":"2","total":"4.20","date":"12/12/12","locationid":"1"}
+    //{"saleid":2,"product":"smos","quantity":2,"total":4.20,"date":"12/12/12","locationid":1}
 app.post('/sales',function(request, response){
     var Verkoop= new Sale(request.body.saleid,request.body.product,request.body.quantity,request.body.total,request.body.date,request.body.locationid);
-    
+    console.log(Verkoop);
    
     dal_Sales.insertSales(Verkoop, function(){
        response.status(201).send();   
