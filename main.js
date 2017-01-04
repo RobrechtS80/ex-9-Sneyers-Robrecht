@@ -42,7 +42,7 @@ var Location = function (locationid, name, city, capacity) {
 app.post('/locations',function(request, response){
     var Locatie= new Location(request.body.locationid,request.body.name,request.body.city,request.body.capaciity);
     
-    dal_Locations.insertLocations(Location, function(){
+    dal_Locations.insertLocations(Locatie, function(){
        response.status(201).send();   
     });
   
