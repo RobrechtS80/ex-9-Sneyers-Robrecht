@@ -6,7 +6,7 @@
  */
 //var dal = require("./storage.js");
 var dal_Locations= require("./Locations.js");
-
+var dal_Sales = require("./Sales.js");
 var validateloc = require("./validate_Loc.js");
 var express = require('express');
 var parser = require('body-parser');
@@ -14,6 +14,7 @@ var parser = require('body-parser');
 var app = express();
 app.use(parser.json());
 
+//Locations
 app.get('/',function(request,response){
     response.send("hello world");
     
@@ -81,6 +82,48 @@ var Locatie= new Location(request.body.locationid,request.body.name,request.body
     });
   
 });
+
+
+//Sales
+app.get('/sales',function(request,response){
+   dal_Locations.listSales(function(result){
+        response.send(result);
+   });
+   
+});
+
+app.get("/sales/:id", function (request, response) {//logischer op id dan op location
+    dal_Locations.findSales(request.params.id, function (result) {  //params niet body natuurlijk
+        response.send(result);
+    });
+//(deze heb ik zelf een keer aangemaakt) 
+});
+
+var Sale = function (saleid, product, quantity,total, date, locationid) {
+  
+    this.saleid = saleid;
+    this.product = product;
+    this.quantity = quantity;
+    this.total=total;
+    this.date=date;
+     this.locationid = locationid;
+};
+    
+app.post('/sales',function(request, response){
+    var Verkoop= new Sale(request.body.locationid,request.body.name,request.body.city,request.body.capacity);
+    
+    var errors = validateloc.fieldsNotEmpty(Locatie, "locationid", "name", "city", "capacity");
+    if (errors) {
+        response.status(400).send({msg: "Following field(s) are mandatory:" + errors.concat()});
+        return;
+    }
+    
+    dal_Locations.insertLocations(Locatie, function(){
+       response.status(201).send();   
+    });
+  
+});
+
 
 console.log('hello world');
 

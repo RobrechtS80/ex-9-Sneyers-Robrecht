@@ -10,7 +10,7 @@ var url='mongodb://localhost:27017/Apidb';
     });
 */
 
-var dal_Locations={
+var dal_Sales={
     connect: function (err, result) {
 		MongoClient.connect(url, function (error, db) {
 			if (error)
@@ -20,7 +20,7 @@ var dal_Locations={
 		});
 	},
         
-       listLocations: function(callback){
+       listSales: function(callback){
            this.connect(null,function(db){
                db.collection('locations').find({}).toArray(function(err,result){
                    db.close();
@@ -30,7 +30,7 @@ var dal_Locations={
            
        },
     
-    findLocation: function(city,callback){
+    findSale: function(city,callback){
            this.connect(null,function(db){
                db.collection('locations').find({city:city}).toArray(function(err,result){
                    db.close();
@@ -40,7 +40,7 @@ var dal_Locations={
            
        },
        //collection.findAndModify    https://mongodb.github.io/node-mongodb-native/markdown-docs/insert.html
-      updateLocations: function(id,callback){
+      updateSales: function(id,callback){
         this.connect(null,function(db){
             db.collection('locations').findAndModify({locationid:id},[],{$set: {"locationid": id}},{new: true},
             function(err, result) {
@@ -68,4 +68,4 @@ var dal_Locations={
     
 };
         
-module.exports=dal_Locations;
+module.exports=dal_Sales;
