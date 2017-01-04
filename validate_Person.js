@@ -1,11 +1,11 @@
 module.exports = {
     fieldsCorrect: function (object) {
         var errors=0;
-        if (object["personid"]==""||typeof object["saleeid"] !== "string"){
+        if (typeof object["personid"]==""||typeof object["personid"] !== "string"){
             errors=errors+1;
         };
         
-         if (object["nrpurchases"]== ""||typeof object["nrpurchases"] !== "number"){
+         if (object["nrpurchases"]<0||typeof object["nrpurchases"] !== "number"){
             errors=errors+1;
         };
         
@@ -13,7 +13,7 @@ module.exports = {
             errors=errors+1;
         };
         
-         if (object["date"]==""||typeof object["date"] !== "string"){
+         if (typeof object["date"]==""||typeof object["date"] !== "string"){
             errors=errors+1;
         };
          if (object["ratio"]<0||typeof object["ratio"] !== "number"){
