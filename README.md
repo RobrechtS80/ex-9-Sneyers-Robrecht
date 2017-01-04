@@ -12,6 +12,20 @@ Info
 
 Voor deze opdracht ben ik begonnen vanaf de code die we gemaakt hebben in de laatste optionele les. de verschillende problemen waar ik tegenaan ben gelopen zijn allemaal zichtbaar in de verschillende commits
 
+----------
+Resources
+-------------
+
+*ik heb maar 3 resource geïmplementeerd en deze zijn **/persons** ( personen op een locatie/cafetaria)*
+
+***/locations** dus de verschillende locaties/cafetaria's*
+
+*en de verschillende verkopen in het kassa systeem onder de resource **/sales***
+
+Met deze resources (**/products** is niet geïmplementeerd) wil k het effect van bepaalde acties zien , maar ook wanneer het het drukst is en hoe men hier dan kan op inspelen.
+     
+        
+-------        
 > **disclaimer:**
 
 > - sommige resources lijken heel hard op andere mensen omdat we hetzelfde business idee hadden. we moesten toen samenzitten en hebben zo gedeeltelijk samen de resources verzonnen die wij dachten nodig te hebben voor onze vragen op te lossen.
@@ -32,6 +46,7 @@ PUT-Probleem
 
 **hij PUT het wel maar geen update**
 
+--------
 Gebruikte Links
 -------------
 
@@ -52,3 +67,6 @@ Gebruikte Links
 >http://stackoverflow.com/questions/35113209/findoneandupdate-returns-null-in-value-on-upsert
 
 >http://stackoverflow.com/questions/26792787/findandmodify-usage-in-node-js-mongodb
+
+
+
