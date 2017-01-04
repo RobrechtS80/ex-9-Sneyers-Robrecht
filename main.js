@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var dal = require("./storage.js");
+//var dal = require("./storage.js");
+var dal_Locations= require("./Locations.js");
 var express = require('express');
 var parser = require('body-parser');
 
@@ -14,6 +15,7 @@ app.get('/',function(request,response){
     response.send("hello world");
     
 });
+
 var Book = function(id,name){
     this._id=id;
     this.id=id;
@@ -23,17 +25,17 @@ var Book = function(id,name){
 var counter=3;
  var books=[new Book(1,'kanker'), new Book(2,'potter')];
  
-app.get('/books',function(request,response){
-   dal.listBooks(function(result){
+app.get('/locations',function(request,response){
+   dal.listLocatioans(function(result){
        
         response.send(result);
    });
    
     
 });
-app.post('/books',function(request, response){
-    request.body;
-    var book=new Book(counter++,request.body.name);
+app.post('/locations',function(request, response){
+    var location= request.body;
+    
     dal.insertBooks(book, function(){
        response.status(201).send();   
     });
