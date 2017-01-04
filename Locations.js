@@ -29,7 +29,16 @@ var dal_Locations={
            });
            
        },
-    
+       
+    findLocation: function(city,callback){
+           this.connect(null,function(db){
+               db.collection('locations').find({city:city}).toArray(function(err,result){
+                   db.close();
+                   callback(result);
+               });
+           });
+           
+       },
     insertLocations: function(Locatie,callback){
         this.connect(null,function(db){
             db.collection('locations').insert(Locatie, function(err,result)
