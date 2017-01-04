@@ -5,6 +5,8 @@
  */
 //var dal = require("./storage.js");
 var dal_Locations= require("./Locations.js");
+
+var validateloc = require("./validate_Loc.js");
 var express = require('express');
 var parser = require('body-parser');
 
@@ -50,6 +52,12 @@ var Location = function (locationid, name, city, capacity) {
     
 app.post('/locations',function(request, response){
     var Locatie= new Location(request.body.locationid,request.body.name,request.body.city,request.body.capacity);
+    
+    var errors = validateloc.fieldsNotEmpty(Locatie, "locationid", "name", "city", "capacity");
+    if (errors) {
+        response.status(400).send({msg: "Following field(s) are mandatory:" + errors.concat()});
+        return;
+    }
     
     dal_Locations.insertLocations(Locatie, function(){
        response.status(201).send();   
