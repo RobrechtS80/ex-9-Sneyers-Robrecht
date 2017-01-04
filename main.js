@@ -7,6 +7,7 @@
 //var dal = require("./storage.js");
 var dal_Locations= require("./Locations.js");
 var dal_Sales = require("./Sales.js");
+var dal_Persons= require("./Persons.js")
 var validateloc = require("./validate_Loc.js");
 var express = require('express');
 var parser = require('body-parser');
@@ -119,7 +120,39 @@ app.post('/sales',function(request, response){
   
 });
 
+//Persons
 
+app.get('/persons',function(request,response){
+   dal_Persons.listPersons(function(result){
+        response.send(result);
+   });
+   
+});
+
+app.get("/persons/:id", function (request, response) {//logischer op id dan op location
+    dal_Persons.findPerson(request.params.id, function (result) {  //params niet body natuurlijk
+        response.send(result);
+    });
+//(deze heb ik zelf een keer aangemaakt) 
+});
+
+var Person = function (personid, nrpurchases, count, date, ratio) {
+  
+    this.personid = personid;
+    this.nrpurchases = nrpurchases;
+    this.count = count;
+    this.date=date;
+     this.ratio = ratio;
+};
+    //{"saleid":"2","product":"smos","quantity":2,"total":4.20,"date":"12/12/12","locationid":1}
+app.post('/persons',function(request, response){
+    var Persoon= new Person(request.body.personid,request.body.nrpurchases,request.body.count,request.body.date,request.body.ratio);
+   
+    dal_Persons.insertPersons(Persoon, function(){
+       response.status(201).send();   
+    });
+  
+});
 console.log('hello world');
 
 app.listen(4324);
