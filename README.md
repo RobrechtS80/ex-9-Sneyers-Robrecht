@@ -16,11 +16,11 @@ Voor deze opdracht ben ik begonnen vanaf de code die we gemaakt hebben in de laa
 Resources
 -------------
 
-*ik heb maar 3 resource geïmplementeerd en deze zijn **/persons** ( personen op een locatie/cafetaria)*
+ik heb maar 3 resource geïmplementeerd en deze zijn **/persons** ( personen op een locatie/cafetaria)
 
-***/locations** dus de verschillende locaties/cafetaria's*
+**/locations** dus de verschillende locaties/cafetaria's
 
-*en de verschillende verkopen in het kassa systeem onder de resource **/sales***
+en de verschillende verkopen in het kassa systeem onder de resource **/sales**
 
 Met deze resources (**/products** is niet geïmplementeerd) wil k het effect van bepaalde acties zien , maar ook wanneer het het drukst is en hoe men hier dan kan op inspelen.
      
