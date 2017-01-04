@@ -9,6 +9,7 @@ var dal_Locations= require("./Locations.js");
 var dal_Sales = require("./Sales.js");
 var dal_Persons= require("./Persons.js")
 var validateloc = require("./validate_Loc.js");
+var validatesale= require("./validate_Sale.js")
 var express = require('express');
 var parser = require('body-parser');
 

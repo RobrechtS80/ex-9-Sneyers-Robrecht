@@ -40,9 +40,9 @@ var dal_Locations={
            
        },
        //collection.findAndModify    https://mongodb.github.io/node-mongodb-native/markdown-docs/insert.html
-      updateLocations: function(id,callback){
+      updateLocations:
         this.connect(null,function(db){
-            db.collection('locations').findAndModify({locationid:id},[],{$set: {locationid: id}},{returnOriginal: false},
+            db.collection('locations').findAndModify({locationid:Locationid},[],{$set: {locationid: id}},{returnOriginal: false},
             function(err, result) {
                 if(err) {
      console.log(err.message);
@@ -51,8 +51,8 @@ var dal_Locations={
      console.log(result);
           //callback(result);
    }});
-        });
-    },
+        }),
+    
     
     
        
