@@ -20,18 +20,22 @@ app.get('/',function(request,response){
  
 app.get('/locations',function(request,response){
    dal_Locations.listLocations(function(result){
-       
+       /*if (err) {
+            console.log(err);
+        }*/
         response.send(result);
    });
    
 });
-
+//err bevat de gegevens die ik nodig heb, kan dit zijn omdat capacity NULL is ? --> neen
 app.get("/locations/:city", function (request, response) {
-    dal_Locations.findLocation(request.params.city, function (result) {
-      
+    dal_Locations.findLocation(request.params.city, function (result) {  //params niet body natuurlijk
+     /* if (err) {
+            console.log(err);
+        }*/
         response.send(result);
     });
-//key:city   Value:Mechelen (deze heb ik zelf een keer aangemaakt) http://localhost:4324/locations/Geel http://localhost:4324/locations/Mechelen
+//(deze heb ik zelf een keer aangemaakt) http://localhost:4324/locations/Geel http://localhost:4324/locations/Mechelen
 });
 
 var Location = function (locationid, name, city, capacity) {
@@ -42,7 +46,7 @@ var Location = function (locationid, name, city, capacity) {
 };
     
 app.post('/locations',function(request, response){
-    var Locatie= new Location(request.body.locationid,request.body.name,request.body.city,request.body.capaciity);
+    var Locatie= new Location(request.body.locationid,request.body.name,request.body.city,request.body.capacity);
     
     dal_Locations.insertLocations(Locatie, function(){
        response.status(201).send();   
