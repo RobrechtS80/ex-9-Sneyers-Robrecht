@@ -1,15 +1,16 @@
 /* 
 
- * get and get by id or location done , validation sort of done
+ 
  * TO DO
- * errors, een update wss een put ? Idempotence
+ een update wss een put ? Idempotence
  */
 //var dal = require("./storage.js");
 var dal_Locations= require("./Locations.js");
 var dal_Sales = require("./Sales.js");
 var dal_Persons= require("./Persons.js")
 var validateloc = require("./validate_Loc.js");
-var validatesale= require("./validate_Sale.js")
+var validatesale= require("./validate_Sale.js");
+var validateperson= require("./validate_Person.js");
 var express = require('express');
 var parser = require('body-parser');
 
@@ -154,6 +155,11 @@ var Person = function (personid, nrpurchases, count, date, ratio) {
 app.post('/persons',function(request, response){
     var Persoon= new Person(request.body.personid,request.body.nrpurchases,request.body.count,request.body.date,request.body.ratio);
    
+   var errors = validateperson.fieldsCorrect(Persoon, "personid", "nrpurchases", "count","date","ratio");
+    if (errors) {
+        response.status(400).send({msg: "some fields are wrong please check again" });
+        return;
+    }
     dal_Persons.insertPersons(Persoon, function(){
        response.status(201).send();   
     });
