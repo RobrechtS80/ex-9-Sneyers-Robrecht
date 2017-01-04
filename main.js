@@ -14,6 +14,7 @@ var validateperson= require("./validate_Person.js");
 var express = require('express');
 var parser = require('body-parser');
 
+
 var app = express();
 app.use(parser.json());
 
@@ -117,7 +118,7 @@ app.post('/sales',function(request, response){
     
     var errors = validatesale.fieldsCorrect(Verkoop, "saleid", "product", "quantity", "total","date","locationid");
     if (errors) {
-        response.status(400).send({msg: "some fields are wrong please check again" });
+        response.status(400).send("pleae check console for error explanation");
         return;
     }
    
