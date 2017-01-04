@@ -86,14 +86,14 @@ var Locatie= new Location(request.body.locationid,request.body.name,request.body
 
 //Sales
 app.get('/sales',function(request,response){
-   dal_Locations.listSales(function(result){
+   dal_Sales.listSales(function(result){
         response.send(result);
    });
    
 });
 
 app.get("/sales/:id", function (request, response) {//logischer op id dan op location
-    dal_Locations.findSales(request.params.id, function (result) {  //params niet body natuurlijk
+    dal_Sales.findSales(request.params.id, function (result) {  //params niet body natuurlijk
         response.send(result);
     });
 //(deze heb ik zelf een keer aangemaakt) 
@@ -108,17 +108,12 @@ var Sale = function (saleid, product, quantity,total, date, locationid) {
     this.date=date;
      this.locationid = locationid;
 };
-    
+    //{"saleid":"1","product":"smos","quantity":"2","total":"4.20","date":"12/12/12","locationid":"1"}
 app.post('/sales',function(request, response){
-    var Verkoop= new Sale(request.body.locationid,request.body.name,request.body.city,request.body.capacity);
+    var Verkoop= new Sale(request.body.saleid,request.body.product,request.body.quantity,request.body.total,request.body.date,request.body.locationid);
     
-    var errors = validateloc.fieldsNotEmpty(Locatie, "locationid", "name", "city", "capacity");
-    if (errors) {
-        response.status(400).send({msg: "Following field(s) are mandatory:" + errors.concat()});
-        return;
-    }
-    
-    dal_Locations.insertLocations(Locatie, function(){
+   
+    dal_Sales.insertSales(Verkoop, function(){
        response.status(201).send();   
     });
   

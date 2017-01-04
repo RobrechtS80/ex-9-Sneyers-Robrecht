@@ -22,7 +22,7 @@ var dal_Sales={
         
        listSales: function(callback){
            this.connect(null,function(db){
-               db.collection('locations').find({}).toArray(function(err,result){
+               db.collection('sales').find({}).toArray(function(err,result){
                    db.close();
                    callback(result);
                });
@@ -30,9 +30,9 @@ var dal_Sales={
            
        },
     
-    findSale: function(city,callback){
+    findSale: function(id,callback){
            this.connect(null,function(db){
-               db.collection('locations').find({city:city}).toArray(function(err,result){
+               db.collection('sales').find({salesid:id}).toArray(function(err,result){
                    db.close();
                    callback(result);
                });
@@ -42,7 +42,7 @@ var dal_Sales={
        //collection.findAndModify    https://mongodb.github.io/node-mongodb-native/markdown-docs/insert.html
       updateSales: function(id,callback){
         this.connect(null,function(db){
-            db.collection('locations').findAndModify({locationid:id},[],{$set: {"locationid": id}},{new: true},
+            db.collection('sales').findAndModify({locationid:id},[],{$set: {"locationid": id}},{new: true},
             function(err, result) {
                 if(err) {
      console.log(err.message);
@@ -56,9 +56,9 @@ var dal_Sales={
     
     
        
-    insertLocations: function(Locatie,callback){
+    insertSales: function(Verkoop,callback){
         this.connect(null,function(db){
-            db.collection('locations').insert(Locatie, function(err,result)
+            db.collection('sales').insert(Verkoop, function(err,result)
             {
                 db.close();
                 callback();
