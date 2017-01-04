@@ -66,6 +66,22 @@ app.post('/locations',function(request, response){
   
 });
 
+app.put('/locations',function(request, response){
+    
+var Locatie= new Location(request.body.locationid,request.body.name,request.body.city,request.body.capacity);
+    
+    var errors = validateloc.fieldsNotEmpty(Locatie, "locationid", "name", "city", "capacity");
+    if (errors) {
+        response.status(400).send({msg: "Following field(s) are mandatory:" + errors.concat()});
+        return;
+    }
+    
+    dal_Locations.updateLocations(request.params.locationid,Locatie, function(result){
+       response.send(result);   
+    });
+  
+});
+
 console.log('hello world');
 
 app.listen(4324);
