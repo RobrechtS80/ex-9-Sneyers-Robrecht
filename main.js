@@ -37,11 +37,12 @@ var Location = function (locationid, name, city, capacity) {
     this.name = name;
     this.city = city;
     this.capacity = capacity;
+};
     
 app.post('/locations',function(request, response){
-    var Location= request.body;
+    var Locatie= new Location(request.body.locationid,request.body.name,request.body.city,request.body.capaciity);
     
-    dal.insertBooks(book, function(){
+    dal_Locations.insertLocations(Location, function(){
        response.status(201).send();   
     });
   

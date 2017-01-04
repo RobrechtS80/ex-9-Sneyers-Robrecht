@@ -30,9 +30,9 @@ var dal_Locations={
            
        },
     
-    insertBooks: function(book,callback){
+    insertLocations: function(Locatie,callback){
         this.connect(null,function(db){
-            db.collection('books').insert(book, function(err,result)
+            db.collection('locations').insert(Locatie, function(err,result)
             {
                 db.close();
                 callback();
