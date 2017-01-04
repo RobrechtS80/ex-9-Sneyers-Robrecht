@@ -32,7 +32,7 @@ var dal_Sales={
     
     findSale: function(id,callback){
            this.connect(null,function(db){
-               db.collection('sales').find({salesid:id}).toArray(function(err,result){
+               db.collection('sales').find({saleid:id}).toArray(function(err,result){
                    db.close();
                    callback(result);
                });

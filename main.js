@@ -93,7 +93,7 @@ app.get('/sales',function(request,response){
 });
 
 app.get("/sales/:id", function (request, response) {//logischer op id dan op location
-    dal_Sales.findSales(request.params.id, function (result) {  //params niet body natuurlijk
+    dal_Sales.findSale(request.params.id, function (result) {  //params niet body natuurlijk
         response.send(result);
     });
 //(deze heb ik zelf een keer aangemaakt) 
@@ -108,7 +108,7 @@ var Sale = function (saleid, product, quantity,total, date, locationid) {
     this.date=date;
      this.locationid = locationid;
 };
-    //{"saleid":2,"product":"smos","quantity":2,"total":4.20,"date":"12/12/12","locationid":1}
+    //{"saleid":"2","product":"smos","quantity":2,"total":4.20,"date":"12/12/12","locationid":1}
 app.post('/sales',function(request, response){
     var Verkoop= new Sale(request.body.saleid,request.body.product,request.body.quantity,request.body.total,request.body.date,request.body.locationid);
     console.log(Verkoop);
