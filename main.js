@@ -113,9 +113,10 @@ var Sale = function (saleid, product, quantity,total, date, locationid) {
     //{"saleid":"2","product":"smos","quantity":2,"total":4.20,"date":"12/12/12","locationid":1}
 app.post('/sales',function(request, response){
     var Verkoop= new Sale(request.body.saleid,request.body.product,request.body.quantity,request.body.total,request.body.date,request.body.locationid);
+    
     var errors = validatesale.fieldsCorrect(Verkoop, "saleid", "product", "quantity", "total","date","locationid");
     if (errors) {
-        response.status(400).send({msg: "Following field(s) are mandatory:" + errors.concat()});
+        response.status(400).send({msg: "some fields are wrong please check again" });
         return;
     }
    
