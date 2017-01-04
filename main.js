@@ -16,14 +16,7 @@ app.get('/',function(request,response){
     
 });
 
-var Book = function(id,name){
-    this._id=id;
-    this.id=id;
-    this.name=name;
-    
-};
-var counter=3;
- var books=[new Book(1,'kanker'), new Book(2,'potter')];
+
  
 app.get('/locations',function(request,response){
    dal_Locations.listLocations(function(result){
@@ -32,6 +25,15 @@ app.get('/locations',function(request,response){
    });
    
 });
+
+app.get("/locations/:city", function (request, response) {
+    dal_Locations.findLocation(request.params.city, function (result) {
+      
+        response.send(result);
+    });
+//key:city   Value:Mechelen (deze heb ik zelf een keer aangemaakt) http://localhost:4324/locations/Geel http://localhost:4324/locations/Mechelen
+});
+
 var Location = function (locationid, name, city, capacity) {
     this.locationid = locationid;
     this.name = name;
