@@ -144,7 +144,7 @@ var Person = function (personid, nrpurchases, count, date, ratio) {
     this.date=date;
      this.ratio = ratio;
 };
-    //{"saleid":"2","product":"smos","quantity":2,"total":4.20,"date":"12/12/12","locationid":1}
+    //{"personid":"1","nrpurchases":5,"count":60,"date":"12/12/12","ratio":0.34}
 app.post('/persons',function(request, response){
     var Persoon= new Person(request.body.personid,request.body.nrpurchases,request.body.count,request.body.date,request.body.ratio);
    
