@@ -26,15 +26,20 @@ var counter=3;
  var books=[new Book(1,'kanker'), new Book(2,'potter')];
  
 app.get('/locations',function(request,response){
-   dal.listLocatioans(function(result){
+   dal_Locations.listLocations(function(result){
        
         response.send(result);
    });
    
-    
 });
+var Location = function (locationid, name, city, capacity) {
+    this.locationid = locationid;
+    this.name = name;
+    this.city = city;
+    this.capacity = capacity;
+    
 app.post('/locations',function(request, response){
-    var location= request.body;
+    var Location= request.body;
     
     dal.insertBooks(book, function(){
        response.status(201).send();   
