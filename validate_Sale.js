@@ -1,26 +1,32 @@
 module.exports = {
     fieldsCorrect: function (object) {
         var errors=0;
-        if (object["saleid"]<=0||typeof object["saleeid"] !== "string"){
+        if (typeof object["saleid"]==""||typeof object["saleid"] !== "string"){
             errors=errors+1;
+            console.log('1');
         };
         
-         if (object["product"]== ""||typeof object["product"] !== "string"){
+         if (typeof object["product"]== ""||typeof object["product"] !== "string"){
             errors=errors+1;
+            console.log('2');
         };
         
          if (object["quantity"]<0||typeof object["quantity"] !== "number"){
             errors=errors+1;
+            console.log('3');
         };
         
          if (object["total"]<0||typeof object["total"] !== "number"){
             errors=errors+1;
+            console.log('4');
         };
-         if (object["date"]==""||typeof object["date"] !== "string"){
+         if (typeof object["date"]==""||typeof object["date"] !== "string"){
             errors=errors+1;
+            console.log('5');
         };
-         if (object["locationid"]==""||typeof object["locationid"] !== "string"){
+         if (typeof object["locationid"]==""||typeof object["locationid"] !== "string"){
             errors=errors+1;
+            console.log('6');
         };
         
         return errors;//eerste keer vergete lol

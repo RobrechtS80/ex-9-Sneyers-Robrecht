@@ -1,7 +1,7 @@
 module.exports = {
     fieldsCorrect: function (object) {
         var errors=0;
-        if (object["personid"]<=0||typeof object["saleeid"] !== "string"){
+        if (object["personid"]==""||typeof object["saleeid"] !== "string"){
             errors=errors+1;
         };
         
@@ -9,14 +9,14 @@ module.exports = {
             errors=errors+1;
         };
         
-         if (object["count"]<0||typeof object["quantity"] !== "number"){
+         if (object["count"]<0||typeof object["count"] !== "number"){
             errors=errors+1;
         };
         
          if (object["date"]==""||typeof object["date"] !== "string"){
             errors=errors+1;
         };
-         if (object["ratio"]==""||typeof object["ratio"] !== "number"){
+         if (object["ratio"]<0||typeof object["ratio"] !== "number"){
             errors=errors+1;
         };
         
